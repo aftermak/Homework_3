@@ -18,10 +18,19 @@ export default function TodoList({createdTodo}) {
     }
   }, [createdTodo]);
 
+  const clickFn = async (id) => {
+    try {
+      await services.delete(id);
+      setTodos((actualState) => actualState.filter((item) => item.id !== id));
+    } catch (err) {
+      console.log(err);
+    }
+  }  
+
   return (
   <ul>
     {todos.map(((item, index) => {
-      return <TodoItem key={index} user={item}/>
+      return <TodoItem key={index} user={item} clickFn={() => clickFn(item.id)}/>
     }))}
   </ul>
   )

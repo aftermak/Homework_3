@@ -14,14 +14,15 @@ export default function TodosForm({setCreatedTodo}) {
   });
 
   const handleTitle = (event) => {
-    setNewTodo((prevState) => ({ ...prevState, title: event.target.value, id: iD }));
+    setNewTodo((actualState) => ({ ...actualState, title: event.target.value, id: iD }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     let response = await services.post(newTodo);
     setCreatedTodo(response);
+    setCreatedTodo((actualState) => ({...actualState, id:iD}) )
   };
 
 
