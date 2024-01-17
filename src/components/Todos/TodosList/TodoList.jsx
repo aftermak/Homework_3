@@ -9,21 +9,19 @@ export default function TodoList({createdTodo}) {
     (async () => {
       const response = await services.get();
       setTodos(response.slice(0, 10));
-    })();
+    })()
   }, []);
 
-  // useEffect (() => {
-  //   console.log();
-  // }), [todos]
-
   useEffect(() => {
-    setTodos(actualState => [...actualState, createdTodo] )
-  }),[createdTodo]
+    if(Object.keys(createdTodo).length){
+      setTodos(actualState => [...actualState, createdTodo])
+    }
+  }, [createdTodo]);
 
   return (
   <ul>
-    {todos.map((item => {
-      return <TodoItem key={item.id} user={item}/>
+    {todos.map(((item, index) => {
+      return <TodoItem key={index} user={item}/>
     }))}
   </ul>
   )

@@ -19,6 +19,7 @@ export default function TodosForm({setCreatedTodo}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     let response = await services.post(newTodo);
     setCreatedTodo(response);
   };
