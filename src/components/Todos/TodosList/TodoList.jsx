@@ -18,7 +18,7 @@ export default function TodoList({createdTodo}) {
     }
   }, [createdTodo]);
 
-  const clickFn = async (id) => {
+  const handleItemDelete = async (id) => {
     try {
       await services.delete(id);
       setTodos((actualState) => actualState.filter((item) => item.id !== id));
@@ -27,10 +27,25 @@ export default function TodoList({createdTodo}) {
     }
   }  
 
+  const handleItemChecked = async (todo) => {
+    let response = await services.patch(todo.id, {completed: !todo.completed })
+    setTodos((actualState) => actualState.map((item) => {
+      if(item.id === todo.id) item.completed = response.completed
+      return item
+    }))
+  }
+
+  
+
   return (
   <ul>
     {todos.map(((item, index) => {
-      return <TodoItem key={index} user={item} clickFn={() => clickFn(item.id)}/>
+      return <TodoItem 
+        key={index} user={item} 
+        itemDelete={() => handleItemDelete(item.id)} 
+        itemChecked={() => handleItemChecked(item)}
+        checked={item.completed}
+        />
     }))}
   </ul>
   )

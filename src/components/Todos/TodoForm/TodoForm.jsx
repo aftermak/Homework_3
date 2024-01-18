@@ -10,7 +10,7 @@ export default function TodosForm({setCreatedTodo}) {
   const [newTodo, setNewTodo] = useState({
     id: iD,
     title: 'Your text',
-    completed: 'false',
+    completed: false,
   });
 
   const handleTitle = (event) => {
