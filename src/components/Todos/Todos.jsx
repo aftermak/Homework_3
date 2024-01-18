@@ -11,8 +11,6 @@ export default function Todos() {
   const [forupdateTodo, setforupdateTodo] = useState({});
   const [updatedTodo, setupdatedTodo] = useState();
 
-  
-  
   return (
     <div className='container'>
         <h1>ToDo List</h1>

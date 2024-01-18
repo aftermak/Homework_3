@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { v4 } from 'uuid';
 import services from '../../../services/todos';
 
-
-
 export default function TodosForm({setCreatedTodo}) {
   const iD = v4();
 
@@ -19,12 +17,10 @@ export default function TodosForm({setCreatedTodo}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     let response = await services.post(newTodo);
     setCreatedTodo(response);
     setCreatedTodo((actualState) => ({...actualState, id:iD}) )
   };
-
 
   return (
     <div>

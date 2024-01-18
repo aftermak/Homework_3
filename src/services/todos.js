@@ -8,5 +8,4 @@ const todos = {
   post: (obj) => axios.post(API, obj).then(({data}) => data)
 };
 
-
 export default todos;

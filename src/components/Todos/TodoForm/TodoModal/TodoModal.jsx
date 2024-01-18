@@ -4,20 +4,20 @@ import services from '../../../../services/todos'
 
 export default function TodoModal({forupdateTodo, setforupdateTodo, setupdatedTodo}) {
 
-    const editTitleTodo = (e) => {
-      setforupdateTodo((actualState) => ({
-        ...actualState, title: e.target.value
-      }))
-    } 
+  const editTitleTodo = (e) => {
+    setforupdateTodo((actualState) => ({
+      ...actualState, title: e.target.value
+    }))
+  } 
 
-    const handleUpdateItem = async () => {
-        const response = await services.post(forupdateTodo);
-        setforupdateTodo({});
-        setupdatedTodo({
-          id: forupdateTodo.id,
-          title: response.title,
-        })
-    }
+  const handleUpdateItem = async () => {
+      const response = await services.post(forupdateTodo);
+      setforupdateTodo({});
+      setupdatedTodo({
+        id: forupdateTodo.id,
+        title: response.title,
+      })
+  }
 
   return (
     Object.keys(forupdateTodo).length ?
