@@ -2,28 +2,29 @@ import React, { useState, useEffect } from 'react';
 import services from '../../../../services/todos'
 
 
-export default function TodoModal({isShow}) {
-    const [showModal, setShowModal] = useState(false);
-    const [updateTodo, setupdateTodo] = useState();
+export default function TodoModal({forupdateTodo, setforupdateTodo, setupdatedTodo}) {
 
-    useEffect (() => {
-        setShowModal(isShow)
-    },[isShow])
+    const editTitleTodo = (e) => {
+      setforupdateTodo((actualState) => ({
+        ...actualState, title: e.target.value
+      }))
+    } 
 
     const handleUpdateItem = async () => {
-        const response = await services.post(updateTodo)
-        console.log(response.title);
-        setShowModal(false);
+        const response = await services.post(forupdateTodo);
+        setforupdateTodo({});
+        setupdatedTodo({
+          id: forupdateTodo.id,
+          title: response.title,
+        })
     }
 
-
-
   return (
-    showModal ?
-    <div className='modal'>
-        <h2>Update ToDo</h2>
-        <input type='text' defaultValue={showModal.title} onChange={(e) => {setupdateTodo({title: e.target.value})}}></input>
-        <button type='button' onClick={handleUpdateItem}>Update</button>
-    </div> : null
+    Object.keys(forupdateTodo).length ?
+      <div className='modal'>
+          <h2>Update ToDo</h2>
+          <input type='text' defaultValue={forupdateTodo.title} onChange={(e) => {editTitleTodo(e)}}></input>
+          <button type='button' onClick={handleUpdateItem}>Update</button>
+      </div> : null
   )
 }

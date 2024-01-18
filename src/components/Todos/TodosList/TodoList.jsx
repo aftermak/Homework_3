@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TodoItem from '../TodosItem/TodoItem';
 import services from '../../../services/todos';
 
-export default function TodoList({createdTodo, setisShow}) {
+export default function TodoList({createdTodo, updatedTodo, setforupdateTodo}) {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
@@ -17,6 +17,14 @@ export default function TodoList({createdTodo, setisShow}) {
       setTodos(actualState => [...actualState, createdTodo])
     }
   }, [createdTodo]);
+
+  useEffect(() => {
+    setTodos((actualState) => actualState.map((item) => {
+      if(item.id === updatedTodo.id) item.title = updatedTodo.title
+      return item
+    }))
+    
+  }, [updatedTodo])
 
   const handleItemDelete = async (id) => {
     try {
@@ -36,10 +44,11 @@ export default function TodoList({createdTodo, setisShow}) {
   }
 
   const handleItemUpdate = async (todo) => {
-    setisShow({
+    setforupdateTodo({
       id: todo.id,
-      title: todo.title
-    });
+      title: todo.title,
+    })
+
   }
 
   return (

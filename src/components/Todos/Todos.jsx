@@ -8,15 +8,17 @@ import TodoModal from './TodoForm/TodoModal/TodoModal';
 
 export default function Todos() {
   const [createdTodo, setCreatedTodo] = useState({});
-  const [isShow, setisShow] = useState();
-  const [updateTodo, setUpdateTodo] = useState({});
+  const [forupdateTodo, setforupdateTodo] = useState({});
+  const [updatedTodo, setupdatedTodo] = useState();
+
+  
   
   return (
     <div className='container'>
         <h1>ToDo List</h1>
-        <TodoModal isShow = {isShow}/>
+        <TodoModal forupdateTodo = {forupdateTodo} setupdatedTodo={setupdatedTodo} setforupdateTodo={setforupdateTodo}/>
         <TodosForm setCreatedTodo = {setCreatedTodo} />
-        <TodoList createdTodo = {createdTodo} setisShow={setisShow}/>
+        <TodoList createdTodo = {createdTodo} updatedTodo={updatedTodo} setforupdateTodo={setforupdateTodo}/>
     </div>
   )
 }
