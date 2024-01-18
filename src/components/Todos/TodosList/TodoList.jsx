@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TodoItem from '../TodosItem/TodoItem';
 import services from '../../../services/todos';
 
-export default function TodoList({createdTodo}) {
+export default function TodoList({createdTodo, setisShow}) {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
@@ -35,7 +35,12 @@ export default function TodoList({createdTodo}) {
     }))
   }
 
-  
+  const handleItemUpdate = async (todo) => {
+    setisShow({
+      id: todo.id,
+      title: todo.title
+    });
+  }
 
   return (
   <ul>
@@ -44,6 +49,7 @@ export default function TodoList({createdTodo}) {
         key={index} user={item} 
         itemDelete={() => handleItemDelete(item.id)} 
         itemChecked={() => handleItemChecked(item)}
+        itemUpdate={() => handleItemUpdate(item)}
         checked={item.completed}
         />
     }))}

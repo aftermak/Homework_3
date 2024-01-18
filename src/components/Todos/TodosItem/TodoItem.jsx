@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function TodoItem({user, itemDelete, itemChecked, checked}) {
+export default function TodoItem({user, itemDelete, itemChecked, itemUpdate, checked}) {
   return (
     <li>
-      <input type='checkbox' onChange={itemChecked} defaultChecked={checked} checked={checked}></input>
+      <input type='checkbox' onChange={itemChecked} checked={checked}></input>
       {user.title}
-      <button>Edit</button>
+      <button onClick={itemUpdate}>Edit</button>
       <button onClick={itemDelete}>Delete</button>
     </li>
   )

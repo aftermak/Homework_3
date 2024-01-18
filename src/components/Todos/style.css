@@ -35,3 +35,13 @@ li {
 button {
     margin: 0 10px;
 }
+
+.modal {
+    background-color: brown;
+    width: 400px;
+    height: 200px;
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    transform:translate(-50%, -50%); 
+}
