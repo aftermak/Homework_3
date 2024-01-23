@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 
 import TodosForm from './TodoForm/TodoForm';
@@ -7,16 +7,19 @@ import TodoModal from './TodoModal/TodoModal';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import Filter from '../Filter/Filter';
+import { TODOS_COLOR, TODOS_FILTER_ALL } from '../../constants/const';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 
 export default function Todos() {
   const [createdTodo, setCreatedTodo] = useState({});
   const [forUpdateTodo, setForUpdateTodo] = useState({});
   const [updatedTodo, setUpdatedTodo] = useState();
-  const [color, setColor] = useState('#000000');
-  const [todosFilter, setTodosFilter] = useState('all');
   const [progress, setProgress] = useState([]);
 
+  const [color, setColor] = useLocalStorage('todosColor', TODOS_COLOR);
+  const [todosFilter, setTodosFilter] = useLocalStorage('todosFilter', TODOS_FILTER_ALL);
+  
   return (
     <div className='container'>
         <h1>ToDo List</h1>

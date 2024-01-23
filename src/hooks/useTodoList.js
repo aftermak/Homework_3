@@ -74,9 +74,8 @@ function useTodoList(createdTodo, updatedTodo, setForUpdateTodo, todosFilter, se
       }
   
 
-  return (
-    [filteredList, handleItemDelete, handleItemChecked, handleItemUpdate]
-  )
+  return [filteredList, handleItemDelete, handleItemChecked, handleItemUpdate]
+  
 }
 
 export default useTodoList
