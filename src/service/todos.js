@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API } from './const';
+import { API } from '../constants/const';
 
 const todos = {
   get: (id) => axios(API + (id ? `/${id}` : ``)).then(({data}) => data),

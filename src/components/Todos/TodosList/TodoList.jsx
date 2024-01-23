@@ -1,59 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TodoItem from '../TodosItem/TodoItem';
-import services from '../../../services/todos';
+import useTodoList from '../../../hooks/useTodoList';
 
-export default function TodoList({createdTodo, updatedTodo, setforupdateTodo}) {
-  const [todos, setTodos] = useState([]);
+export default function TodoList({
+  createdTodo, 
+  updatedTodo, 
+  setForUpdateTodo, 
+  color, 
+  todosFilter, 
+  setProgress
+}) {
 
-  useEffect(() => {
-    (async () => {
-      const response = await services.get();
-      setTodos(response.slice(0, 10));
-    })()
-  }, []);
-
-  useEffect(() => {
-    if(Object.keys(createdTodo).length){
-      setTodos(actualState => [...actualState, createdTodo])
-    }
-  }, [createdTodo]);
-
-  useEffect(() => {
-    setTodos((actualState) => actualState.map((item) => {
-      if(item.id === updatedTodo.id) item.title = updatedTodo.title
-      return item
-    }))
+  const [
+    filteredList, 
+    handleItemDelete, 
+    handleItemChecked, 
+    handleItemUpdate
+  ] = useTodoList(createdTodo, updatedTodo, setForUpdateTodo, todosFilter, setProgress);
     
-  }, [updatedTodo])
-
-  const handleItemDelete = async (id) => {
-    try {
-      await services.delete(id);
-      setTodos((actualState) => actualState.filter((item) => item.id !== id));
-    } catch (err) {
-      console.log(err);
-    }
-  }  
-
-  const handleItemChecked = async (todo) => {
-    let response = await services.patch(todo.id, {completed: !todo.completed })
-    setTodos((actualState) => actualState.map((item) => {
-      if(item.id === todo.id) item.completed = response.completed
-      return item
-    }))
-  }
-
-  const handleItemUpdate = async (todo) => {
-    setforupdateTodo({
-      id: todo.id,
-      title: todo.title,
-    })
-
-  }
-
   return (
-  <ul>
-    {todos.map(((item, index) => {
+  <ul style={{color: color}}>
+    {filteredList.map(((item, index) => {
       return <TodoItem 
         key={index} user={item} 
         itemDelete={() => handleItemDelete(item.id)} 

@@ -44,3 +44,9 @@ button {
     left:50%; 
     transform:translate(-50%, -50%); 
 }
+
+.colorWrapper {
+    display: flex;
+    align-items: center;
+
+}

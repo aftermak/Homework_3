@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { v4 } from 'uuid';
-import services from '../../../services/todos';
+import services from '../../../service/todos';
 
 export default function TodosForm({setCreatedTodo}) {
   const iD = v4();
