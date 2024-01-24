@@ -1,52 +1,5 @@
 
-.container {
-    margin:  0 auto;
-    background-color:aqua;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-}
-
-form {
-    width: fit-content;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: bisque;
-}
-
-input {
-    display: block;
-    margin: 10px;
-    margin-bottom: 10px;
-}
-
-li {
-    display: flex;
-    justify-content: right;
-    align-items:center;
-}
-
-button {
-    margin: 0 10px;
-}
-
-.modal {
-    background-color: #df80ff;
-    width: 400px;
-    height: 200px;
-    position:absolute; 
-    top:50%; 
-    left:50%; 
-    transform:translate(-50%, -50%); 
-}
-
-.colorWrapper {
-    display: flex;
-    align-items: center;
-
+body {
+    margin: 0;
+    box-sizing: border-box;
 }

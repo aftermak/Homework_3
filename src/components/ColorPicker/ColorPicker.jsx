@@ -1,12 +1,11 @@
 import React, {memo} from 'react'
+import { MuiColorInput } from 'mui-color-input'
+
 
 export default memo (function ColorPicker({color, setcolor}) {
-  const handleColor = e => setcolor(e.target.value)
+  const handleColor = e => setcolor(e)
 
   return (
-    <div className='colorWrapper'>
-        <input type="color" name="color" id="color" defaultValue={color} onChange={handleColor} />
-        <label htmlFor='color'>Choose color</label>
-    </div>
+    <MuiColorInput value={color} size='small' variant='standard' onChange={handleColor} label='Color' />
   )
 })

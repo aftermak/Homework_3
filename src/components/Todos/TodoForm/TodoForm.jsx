@@ -2,7 +2,17 @@ import React, { useState } from 'react';
 import { v4 } from 'uuid';
 import services from '../../../service/todos';
 
-export default function TodosForm({setCreatedTodo}) {
+
+
+
+
+
+
+
+
+export default function TodosForm({setCreatedTodo, openCreate, setOpenCreate}) {
+
+
   const iD = v4();
 
   const [newTodo, setNewTodo] = useState({
@@ -32,5 +42,9 @@ export default function TodosForm({setCreatedTodo}) {
             <button>Create New ToDo</button>
         </form>
     </div>
+
+
+
+
   )
 }
