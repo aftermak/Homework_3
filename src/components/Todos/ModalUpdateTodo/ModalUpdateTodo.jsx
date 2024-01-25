@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import services from '../../../service/todos'
-
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
-
 
 const style = {
   position: 'absolute',
@@ -40,26 +37,19 @@ export default function BasicModal({ forUpdateTodo, setForUpdateTodo, setUpdated
     })
   }
 
-
   return (
-
-
-
     <div>
       <Modal
-        open={Object.keys(forUpdateTodo).length}
-        close={handleUpdateItem}
+        open={!!Object.keys(forUpdateTodo).length}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-
-
           <TextField
             defaultValue={forUpdateTodo.title}
             fullWidth
             id="fullWidth"
-            label="Create Your new ToDo"
+            label="Update Your ToDo"
             placeholder="Enter the text here"
             multiline
             maxRows={4}

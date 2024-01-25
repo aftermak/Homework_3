@@ -9,7 +9,6 @@ import Select from '@mui/material/Select';
 export default function Filter({ todosFilter, setTodosFilter }) {
   const handleSelect = e => setTodosFilter(e.target.value);
   return (
-
     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }} size="small" >
       <InputLabel id="demo-simple-select-label" >Filter</InputLabel>
       <Select

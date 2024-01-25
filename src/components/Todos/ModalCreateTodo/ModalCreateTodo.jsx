@@ -1,14 +1,11 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { v4 } from 'uuid';
 import service from '../../../service/todos';
 
-
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
-
 
 const style = {
   position: 'absolute',
@@ -25,8 +22,6 @@ const style = {
 };
 
 export default function BasicModal({ openCreate, setOpenCreate, setCreatedTodo }) {
-
-
   const iD = v4();
 
   const [newTodo, setNewTodo] = useState({
@@ -43,10 +38,9 @@ export default function BasicModal({ openCreate, setOpenCreate, setCreatedTodo }
     e.preventDefault();
     let response = await service.post(newTodo);
     setCreatedTodo(response);
-    setCreatedTodo((actualState) => ({...actualState, id:iD}) )
+    setCreatedTodo((actualState) => ({ ...actualState, id: iD }))
     setOpenCreate(false)
   };
-
 
   return (
     <div>
@@ -56,22 +50,19 @@ export default function BasicModal({ openCreate, setOpenCreate, setCreatedTodo }
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} component='form' onSubmit={handleSubmit} noValidate autoComplete="off">
-    
-      
-        <TextField
-          fullWidth 
-          id="fullWidth"
-          label="Create Your new ToDo"
-          placeholder="Enter the text here"
-          multiline
-          maxRows={4}
-          variant='outlined'
-          onChange={handleTitle}
-          size='normal'
-          margin='dense'
-          autoFocus='true'
-        />
-        <Button variant="contained" type='submit' sx={{mt: 2, pl:3, pr: 3}} >Create</Button>
+          <TextField
+            fullWidth
+            id="fullWidth"
+            label="Create Your new ToDo"
+            placeholder="Enter the text here"
+            multiline
+            maxRows={4}
+            variant='outlined'
+            onChange={handleTitle}
+            size='normal'
+            margin='dense'
+          />
+          <Button variant="contained" type='submit' sx={{ mt: 2, pl: 3, pr: 3 }} >Create</Button>
         </Box>
       </Modal>
     </div>

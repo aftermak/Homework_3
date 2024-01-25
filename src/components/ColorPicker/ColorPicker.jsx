@@ -1,8 +1,7 @@
-import React, {memo} from 'react'
+import React, { memo } from 'react'
 import { MuiColorInput } from 'mui-color-input'
 
-
-export default memo (function ColorPicker({color, setcolor}) {
+export default memo(function ColorPicker({ color, setcolor }) {
   const handleColor = e => setcolor(e)
 
   return (
